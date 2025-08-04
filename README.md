@@ -1,4 +1,5 @@
 # AI ventures
-My personal exploration of AI for use in coding and software development. Although I have been working in IT for over 15+ years, coding or software development has been an area that has never been exciting and always feels like a chore to do, however with AI now becoming able to take these tasks from me it may allow me to no longer need to do the "boring stuff" (coding).
 
-This is a personal public repository of my notes and learnings related to my attempts at using these bleeding edge AI tools and processes to build some stuff. 
+I’ve been in IT for over 15 years, but coding has never really been my thing—it’s always felt like a tedious part of the job. Now that AI tools are getting good enough to handle a lot of that work, I’m finally interested in building stuff without dreading the process.
+
+This repo is a personal, public space where I’m collecting notes, experiments, and thoughts as I explore how to use the latest AI tools to get things done with as little hands-on coding as possible.
