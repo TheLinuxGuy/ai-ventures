@@ -7,6 +7,11 @@ Can we build a media file server file manager which allows users to quickly and 
 - visualize data from other systems (Sonarr, Radarr)
 - keep history tracker of folder and files created, updated, deleted, moved.
 
+## Development setup
+
+- Ubuntu LXC container intended to be used for dev and local testing.
+  - We need to have a local system where I can easily add virtual disks so our program can move data around between A and B disks.
+
 ## AI details
 
 ### Agentic Framework
