@@ -10,23 +10,34 @@ This repo is a personal, public space where I’m collecting notes, experiments,
 
 In your VScode client configuration .json file, add the following. Note that "chat.tools.autoApprove" is marked experimental so they may change or rename this later.
 
+WARNING: `".*": true` could be used in `allowList` to permit everything. It's super dangerous and the reason why I chose to explicitly allowlist commands I am ok with it running itself.
+
 ```json
 {
     "chat.tools.autoApprove": true,
     "chat.agent.maxRequests": 10000,
     "github.copilot.chat.agent.autoFix": true,
     "github.copilot.chat.agent.runTasks": true,
+    "github.copilot.chat.agent.terminal.autoApprove": true,
     "github.copilot.chat.agent.terminal.allowList": {
         "echo": true,
         "cd": true,
         "ls": true,
         "cat": true,
+        "chmod": true,
         "pwd": true,
+        "apt": true,
+        "make": true,
+        "pkill": true,
+        "netstat": true,
+        "grep": true,
+        "head": true,
         "find": true,
         "curl": true,
         "docker": true,
         "docker-compose": true,
         "mkdir": true,
+        "rm": true,
         "which": true,
         "wc": true,
         "md-tree": true,
@@ -39,6 +50,9 @@ In your VScode client configuration .json file, add the following. Note that "ch
         "Get-ChildItem": true,
         "Get-Content": true,
         "Get-Location": true
+    }
+    "github.copilot.advanced": {
+        "agent.autoRunCommands": true
     }
 }
 ```

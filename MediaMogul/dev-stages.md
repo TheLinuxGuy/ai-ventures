@@ -3,6 +3,10 @@
 This page lists a changelog on how and what I have tried to do, while evolving the codebase. Useful for future retrospectives and lessons learned. 
 * Others may benefit from reading through my experience and history.
 
+## Overview
+- STEP 1: `docs/` are defined and created.
+- STEP 2: `stories/` are created and refined through iterations with AI model.
+
 ## Stage 1: SPEC development
 - Model used and interface: `gemini-2.5pro` via gemini.google.com UI using `gems` configured with 
   
