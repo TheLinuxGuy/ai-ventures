@@ -4,7 +4,8 @@ This page lists a changelog on how and what I have tried to do, while evolving t
 * Others may benefit from reading through my experience and history.
 
 ## Stage 1: SPEC development
-
+- Model used and interface: `gemini-2.5pro` via gemini.google.com UI using `gems` configured with 
+  
 After setting up BMAD on the projects respository, we need to create the PRD files and related documentation before starting to build anything. 
 
 ### Prompt: Define the Product Requirements
@@ -124,3 +125,11 @@ The users of our application are single users running their own server media ser
 Our application should be written mostly in Golang for the backend and the frontend should inclue the use of modern frameworks with nice looking UI elements like shadcn. There are dependencies on [rsync](https://linux.die.net/man/1/rsync), [MediaInfo](https://mediaarea.net/en/MediaInfo), [smartctl](https://linux.die.net/man/8/smartctl) binaries which must be present in the system as a pre-requisite for certain actions. 
 
 Our application will be open-source, we will use github.com actions to automatically package and distribute docker containers with our application and its dependencies. Our users should only be required to download and run our docker container with appropriate settings to map their disks and gain capabilities offered by our app. Since this tool will be free, our application web interface as well as our github repository should remind users to donate to the developer @TheLinuxGuy via buymeacoffee.com/TheLinuxGuy
+
+## Stage 2: Generated plans (prd, etc)
+
+After following the framework instructions, we should now have the following files.
+-   `docs/architecture.md`
+-   `docs/front-end-spec.md`
+-   `docs/prd.md`
+
