@@ -12,6 +12,8 @@ In your VScode client configuration .json file, add the following. Note that "ch
 
 WARNING: `".*": true` could be used in `allowList` to permit everything. It's super dangerous and the reason why I chose to explicitly allowlist commands I am ok with it running itself.
 
+TIP: I think you can get away with auto agentic coding in copilot with just `chat.tools.autoApprove` + `chat.editing.autoAcceptDelay` + `chat.agent.maxRequests`
+
 ```json
 {
     "chat.tools.autoApprove": true,
@@ -19,6 +21,7 @@ WARNING: `".*": true` could be used in `allowList` to permit everything. It's su
     "github.copilot.chat.agent.autoFix": true,
     "github.copilot.chat.agent.runTasks": true,
     "github.copilot.chat.agent.terminal.autoApprove": true,
+    "chat.editing.autoAcceptDelay": 1,
     "github.copilot.chat.agent.terminal.allowList": {
         "echo": true,
         "cd": true,
@@ -50,9 +53,6 @@ WARNING: `".*": true` could be used in `allowList` to permit everything. It's su
         "Get-ChildItem": true,
         "Get-Content": true,
         "Get-Location": true
-    }
-    "github.copilot.advanced": {
-        "agent.autoRunCommands": true
     }
 }
 ```
