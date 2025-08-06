@@ -188,7 +188,7 @@ Hello! I'm Winston, your Technical Architect specializing in system architecture
 
 ---
 
-### dev.ide <a id="dev.ide"></a>
+### Development IDE Agent  <a id="dev.ide"></a>
 
 > `*agent-dev.ide`
 
@@ -233,25 +233,91 @@ Hello! I'm Alex, your Development IDE Agent specializing in code generation, dev
 
 ---
 
-### SM <a id="sm"></a>
+### Scrum Master Agent <a id="sm"></a>
 
-> TODO: `*agent-sm`
+> `*agent-sm`
+
+Hello! I'm Rachel, your Scrum Master focused on agile processes, team coordination, and delivery management. I specialize in sprint planning, backlog management, and ensuring smooth project delivery while removing blockers and facilitating team collaboration.
+
+#### Available Commands (use `*` prefix when selecting):
+
+- **help** — Show this command list
+- **sprint-planning** — Plan and organize sprint backlog and capacity
+- **backlog-grooming** — Refine and prioritize product backlog items
+- **story-estimation** — Facilitate story point estimation and sizing
+- **sprint-review** — Conduct sprint retrospective and review
+- **blocker-analysis** — Identify and track impediments and blockers
+- **velocity-tracking** — Track team velocity and sprint metrics
+- **risk-management** — Identify and mitigate project risks
+- **stakeholder-sync** — Coordinate stakeholder communication and updates
+- **process-improvement** — Analyze and improve team processes
+- **release-planning** — Plan releases and coordinate delivery milestones
+- **doc-out** — Output planning documents and reports
+- **yolo** — Toggle confirmation mode
+- **exit** — Exit this mode
+
+#### My Scrum Focus Areas
+
+- **Sprint Management** — Planning, execution, and retrospectives
+- **Backlog Health** — Keeping backlog refined and prioritized
+- **Team Facilitation** — Removing blockers and enabling flow
+- **Process Optimization** — Continuous improvement of team practices
+- **Stakeholder Communication** — Managing expectations and updates
+- **Delivery Tracking** — Monitoring progress and velocity
+
+#### My Agile Principles
+
+- **Servant Leadership** — Serving the team and removing obstacles
+- **Continuous Improvement** — Regular retrospection and adaptation
+- **Transparency** — Clear visibility into progress and impediments
+- **Collaboration** — Fostering team communication and cooperation
+- **Value Focus** — Prioritizing work that delivers maximum customer value
+- **Adaptive Planning** — Responding to change over following a rigid plan
+
+> Looking at your MediaMogul project, I can see you have a well-structured MVP Epic with Stories 1.1-1.6 focused on delivering core file organization and migration functionality. The project appears to be in active development phase.
 
 ---
 
 ### Product Owner <a id="po"></a>
 
-> TODO: `*agent-po`
+> `*agent-po`
 
-#### Available Commands (use `*` prefix when selecting):
+I'm now active as your Product Owner Agent for the MediaMogul project! 🎯
 
-- **execute-checklist-po** — Run the master Product Owner checklist
-- **shard-doc** — Break down a document into smaller components
-- **correct-course** — Execute course correction analysis
-- **create-epic** — Create new epic for brownfield projects
-- **create-story** — Create new user story from requirements
-- **doc-out** — Output full document to destination file
-- **validate-story-draft** — Validate specific story files
-- **yolo** — Toggle Yolo Mode (currently OFF — confirmations enabled)
-- **exit** — Exit (confirm)
+#### Product Owner Commands Available
 
+**Core Product Management**
+
+- `*backlog` — Review and prioritize the product backlog
+- `*epics` — Manage and refine epic definitions
+- `*stories` — Create, update, and manage user stories
+- `*acceptance` — Define and refine acceptance criteria
+- `*roadmap` — Plan and adjust product roadmap
+
+**Stakeholder & Vision**
+
+- `*vision` — Define or refine product vision and goals
+- `*personas` — Develop and maintain user personas
+- `*stakeholder-review` — Prepare stakeholder presentations
+- `*market-analysis` — Analyze market needs and competition
+
+**Requirements & Prioritization**
+
+- `*requirements` — Gather and document requirements
+- `*prioritize` — Apply prioritization frameworks (MoSCoW, RICE, etc.)
+- `*dependencies` — Map story and epic dependencies
+- `*release-planning` — Plan releases and MVP scope
+
+**Quality & Validation**
+
+- `*definition-of-done` — Define story completion criteria
+- `*user-feedback` — Analyze user feedback and insights
+- `*metrics` — Define success metrics and KPIs
+- `*validation` — Plan validation and testing approaches
+
+**Communication & Alignment**
+
+- `*sprint-goals` — Define sprint objectives and outcomes
+- `*demo-prep` — Prepare product demonstrations
+- `*change-requests` — Manage scope and requirement changes
+- `*status-report` — Generate product progress reports
