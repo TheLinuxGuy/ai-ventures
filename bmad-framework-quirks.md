@@ -13,9 +13,11 @@ I'm exploring the [BMAD-METHOD](https://github.com/bmadcode/BMAD-METHOD) for AI 
 
 ## Commands Cheatsheet
 
+---
+
 ### Business Analyst Agent "Emily" <a id="analyst"></a>
 
-> *agent-analyst
+> `*agent-analyst`
 
 Hello! I'm Emily, your Business Analyst focused on requirement gathering, stakeholder analysis, and process documentation. I specialize in bridging the gap between business needs and technical solutions through systematic analysis and clear documentation.
 
@@ -59,10 +61,11 @@ Hello! I'm Emily, your Business Analyst focused on requirement gathering, stakeh
 - Risk identification and mitigation strategies
 - Acceptance criteria development for user stories
 
+---
 
 ### Design Architect Agent "Marcus" <a id="design-architect"></a>
 
-> *agent-design-architect
+> `*agent-design-architect`
 
 Hello! I'm Marcus, your Design Architect specializing in system design, technical architecture, and solution blueprints. I focus on creating scalable, maintainable architectures that align with business requirements while following engineering best practices.
 
@@ -100,68 +103,147 @@ Hello! I'm Marcus, your Design Architect specializing in system design, technica
 - **Maintainability** — Design for long-term maintenance and evolution
 - **Performance Optimization** — Balance functionality with efficiency
 
+---
 
 ### Product Manager "John" <a id="pm"></a>
 
-> *agent-pm
+> `*agent-pm`
 
 Hello! I'm John, your Product Manager specialized in document creation and product research. I focus on creating PRDs and other product documentation using templates with an investigative, data-driven approach.
 
-Here are my available commands (use * prefix when selecting):
+#### Available Commands (use `*` prefix when selecting):
 
-help - Show this command list
-create-prd - Run task create-doc.md with template prd-tmpl.yaml
-create-brownfield-prd - Run task create-doc.md with template brownfield-prd-tmpl.yaml
-create-brownfield-epic - Run task brownfield-create-epic.md
-create-brownfield-story - Run task brownfield-create-story.md
-create-epic - Create epic for brownfield projects (task brownfield-create-epic)
-create-story - Create user story from requirements (task brownfield-create-story)
-doc-out - Output full document to current destination file
-shard-prd - Run the task shard-doc.md for the provided prd.md (ask if not found)
-correct-course - Execute the correct-course task
-yolo - Toggle Yolo Mode
-exit - Exit (confirm)
-My Core Principles:
-Deeply understand "Why" - uncover root causes and motivations
-Champion the user - maintain relentless focus on target user value
-Data-informed decisions with strategic judgment
-Ruthless prioritization & MVP focus
-Clarity & precision in communication
-What I Can Help With:
-Creating comprehensive Product Requirements Documents
-Breaking down complex features into manageable epics
-Writing user stories with clear acceptance criteria
-Analyzing product requirements and market fit
-Strategic product planning and roadmap development
+- **help** — Show this command list
+- **create-prd** — Run task `create-doc.md` with template `prd-tmpl.yaml`
+- **create-brownfield-prd** — Run task `create-doc.md` with template `brownfield-prd-tmpl.yaml`
+- **create-brownfield-epic** — Run task `brownfield-create-epic.md`
+- **create-brownfield-story** — Run task `brownfield-create-story.md`
+- **create-epic** — Create epic for brownfield projects (task `brownfield-create-epic`)
+- **create-story** — Create user story from requirements (task `brownfield-create-story`)
+- **doc-out** — Output full document to current destination file
+- **shard-prd** — Run the task `shard-doc.md` for the provided `prd.md` (ask if not found)
+- **correct-course** — Execute the correct-course task
+- **yolo** — Toggle Yolo Mode
+- **exit** — Exit (confirm)
 
+#### My Core Principles
+
+- Deeply understand "Why" — uncover root causes and motivations
+- Champion the user — maintain relentless focus on target user value
+- Data-informed decisions with strategic judgment
+- Ruthless prioritization & MVP focus
+- Clarity & precision in communication
+
+#### What I Can Help With
+
+- Creating comprehensive Product Requirements Documents
+- Breaking down complex features into manageable epics
+- Writing user stories with clear acceptance criteria
+- Analyzing product requirements and market fit
+- Strategic product planning and roadmap development
+
+---
 
 ### Architect <a id="architect"></a>
 
-> *agent-architect
+> `*agent-architect`
 
-- **create-full-stack-architecture** — Design complete fullstack system architecture
-- **create-backend-architecture** — Focus on backend system design and APIs
-- **create-front-end-architecture** — Design frontend architecture and components
-- **create-brownfield-architecture** — Architecture for existing system improvements
-- **doc-out** — Output complete document to current destination file
-- **document-project** — Comprehensive project documentation analysis
-- **execute-checklist** — Run architecture validation checklist (default: architect-checklist)
-- **research** — Execute deep research on specific architectural topics
-- **shard-prd** — Break down architecture into focused PRD sections
-- **yolo** — Toggle Yolo Mode for rapid prototyping
-- **exit** — Complete current session and return to normal mode
+Hello! I'm Winston, your Technical Architect specializing in system architecture, solution design, and technical decision-making. I focus on creating robust, scalable architectures that align with business goals while ensuring technical excellence and maintainability.
+
+#### Available Commands (use `*` prefix when selecting):
+
+- **help** — Show this command list
+- **create-architecture** — Create comprehensive architecture documentation
+- **architecture-review** — Review and analyze existing architecture
+- **tech-stack-analysis** — Analyze and recommend technology choices
+- **design-patterns** — Recommend architectural and design patterns
+- **scalability-planning** — Design for scalability and performance
+- **integration-design** — Design system integrations and APIs
+- **security-architecture** — Design security framework and protocols
+- **deployment-architecture** — Design deployment and infrastructure strategy
+- **migration-strategy** — Plan technical migrations and refactoring
+- **doc-out** — Output architectural documentation to current file
+- **yolo** — Toggle confirmation mode
+- **exit** — Exit this mode
+
+#### My Architectural Expertise
+
+- **System Design** — High-level architecture and component relationships
+- **Technology Strategy** — Selecting the right tools for the job
+- **Scalability & Performance** — Building systems that can grow
+- **Security Architecture** — Designing secure, resilient systems
+- **Integration Patterns** — API design and service communication
+- **Infrastructure Design** — Deployment and operational architecture
+
+#### My Design Philosophy
+
+- **Simplicity First** — Start simple, add complexity only when needed
+- **Proven Patterns** — Leverage battle-tested architectural patterns
+- **Future-Ready** — Design for change and evolution
+- **Security by Design** — Build security into the foundation
+- **Operational Excellence** — Design for monitoring, logging, and maintenance
+- **Business Alignment** — Architecture serves business objectives
+
+> Looking at your MediaMogul project, I can see a well-structured Go backend with Next.js frontend following clean architecture principles. The separation between handlers, services, stores, and models shows good layering.
+
+---
 
 ### dev.ide <a id="dev.ide"></a>
 
-> TODO: *agent-dev.ide
+> `*agent-dev.ide`
+
+Hello! I'm Alex, your Development IDE Agent specializing in code generation, development environment setup, and hands-on implementation. I focus on translating architectural designs and requirements into working code while maintaining best practices and clean architecture.
+
+#### Available Commands (use `*` prefix when selecting):
+
+- **help** — Show this command list
+- **generate-code** — Generate code files based on specifications and architecture
+- **setup-project** — Initialize project structure and development environment
+- **create-boilerplate** — Generate boilerplate code for common patterns
+- **implement-feature** — Implement specific features from user stories
+- **refactor-code** — Refactor existing code for better structure and maintainability
+- **add-tests** — Generate unit tests and integration tests for code
+- **setup-ci-cd** — Configure continuous integration and deployment pipelines
+- **add-middleware** — Implement middleware for authentication, logging, etc.
+- **generate-api** — Generate API endpoints and handlers
+- **setup-database** — Generate database schemas and migrations
+- **doc-out** — Output generated code to files
+- **yolo** — Toggle confirmation mode
+- **exit** — Exit this mode
+
+#### My Development Focus Areas
+
+- **Code Generation** — Creating clean, well-structured code from specifications
+- **Architecture Implementation** — Translating designs into working systems
+- **Best Practices** — Following coding standards and patterns
+- **Testing** — Implementing comprehensive test coverage
+- **DevOps** — Setting up CI/CD and development workflows
+- **Performance** — Writing efficient, optimized code
+
+#### My Development Principles
+
+- **Clean Code** — Readable, maintainable, and well-documented code
+- **SOLID Principles** — Following object-oriented design principles
+- **DRY (Don't Repeat Yourself)** — Eliminate code duplication
+- **Test-Driven Development** — Write tests alongside implementation
+- **Security First** — Implement secure coding practices
+- **Performance Aware** — Consider performance implications in code design
+
+> Looking at your MediaMogul project structure, I can see a well-organized Go backend with Next.js frontend. The architecture follows clean separation with handlers, services, stores, and models layers.
+
+---
 
 ### SM <a id="sm"></a>
 
-> TODO: *agent-sm
+> TODO: `*agent-sm`
+
+---
 
 ### Product Owner <a id="po"></a>
 
-> TODO: *agent-po
+> TODO: `*agent-po`
+
+#### Available Commands (use `*` prefix when selecting):
 
 - **execute-checklist-po** — Run the master Product Owner checklist
 - **shard-doc** — Break down a document into smaller components
@@ -172,3 +254,4 @@ Strategic product planning and roadmap development
 - **validate-story-draft** — Validate specific story files
 - **yolo** — Toggle Yolo Mode (currently OFF — confirmations enabled)
 - **exit** — Exit (confirm)
+
