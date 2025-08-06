@@ -13,6 +13,15 @@ I'm exploring the [BMAD-METHOD](https://github.com/bmadcode/BMAD-METHOD) for AI 
 
 ## Commands Cheatsheet
 
+### Quick Navigation
+- [Business Analyst Agent "Emily" - `*agent-analyst`](#analyst)
+- [Design Architect Agent "Marcus" - `*agent-design-architect`](#design-architect)
+- [Product Manager "John" - `*agent-pm`](#pm)
+- [Architect "Winston" - `*agent-architect`](#architect)
+- [Development IDE Agent "Alex" - `*agent-dev.ide`](#dev.ide)
+- [Scrum Master Agent "Rachel" - `*agent-sm`](#sm)
+- [Product Owner Agent - `*agent-po`](#po)
+
 ---
 
 ### Business Analyst Agent "Emily" <a id="analyst"></a>
