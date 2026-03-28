@@ -65,3 +65,4 @@ I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extens
 
 - Centralized setup, usage guidance, and cross-device config lives in [`claude/README.md`](claude/README.md)
 - Shared Claude CLI config for device sync is in [`claude/settings.json`](claude/settings.json)
+- Full chapter-by-chapter course notes and feature reference: [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)

@@ -54,6 +54,170 @@ cat ~/.claude/settings.json
   - A pre-tool hook that blocks `pip install` and nudges `uv` usage
   - Voice enabled
 
+## Claude workflow tips (video highlights)
+
+Reference video: https://www.youtube.com/watch?v=XkSBO-CZDFs
+
+Related full-course reference: [claude/claude-code-advanced-course-reference.md](claude/claude-code-advanced-course-reference.md)
+
+These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
+
+How this section is intended to be used:
+- Use this section as quick tactical reminders during active work.
+- Use the full course reference for deeper system design and workflow architecture.
+
+### 1) Prioritize CLI over MCP when possible
+
+- **Docs:**
+  - Claude Code overview: https://docs.anthropic.com/en/docs/claude-code
+  - Claude Code workflows: https://docs.anthropic.com/en/docs/claude-code/common-workflows
+  - MCP overview: https://docs.anthropic.com/en/docs/mcp
+
+- **What this does:**
+  - Keeps work in terminal-native flows, which can reduce context/tool overhead for local coding tasks.
+- **How to use it:**
+  - Start with direct shell commands and Claude Code terminal workflows.
+  - Add MCP only when you need explicit external tool orchestration or structured integrations.
+- **Example:**
+  - Prefer "search files, edit, run tests" directly in terminal before introducing an MCP server for the same task.
+
+### 2) Use `/btw` for side conversations
+
+- **Docs:**
+  - Slash commands: https://docs.anthropic.com/en/docs/claude-code/slash-commands
+
+- **What this does:**
+  - Creates a side thread for tangents so your main task context stays cleaner.
+- **How to use it:**
+  - When a non-blocking thought appears, move it into a `/btw` thread.
+  - Return to the main thread after capturing the decision.
+- **Example:**
+  - Mid-refactor, ask a naming/style question in `/btw` instead of injecting it into the main implementation thread.
+
+### 3) Add task-completion audio with `/hook`
+
+- **Docs:**
+  - Hooks: https://docs.anthropic.com/en/docs/claude-code/hooks
+  - Slash commands: https://docs.anthropic.com/en/docs/claude-code/slash-commands
+
+- **What this does:**
+  - Adds an alert when a task finishes so you can multitask without constantly checking status.
+- **How to use it:**
+  - Define a completion hook that runs a local notifier.
+  - Keep the hook lightweight and non-blocking.
+- **Example:**
+  - On macOS, trigger a short sound so you know when a long test/debug cycle finishes.
+
+### 4) Use `/clear` frequently
+
+- **Docs:**
+  - Slash commands: https://docs.anthropic.com/en/docs/claude-code/slash-commands
+
+- **What this does:**
+  - Resets accumulated context to keep responses sharp in long-running sessions.
+- **How to use it:**
+  - Clear context after major milestones.
+  - Immediately restate: current goal, constraints, and next action.
+- **Example:**
+  - Finish "implement feature", run `/clear`, then start fresh with "now write tests for feature X with Y constraints".
+
+### 5) Enable a custom status line with `/status-line`
+
+- **Docs:**
+  - Status line and settings: https://docs.anthropic.com/en/docs/claude-code/settings
+  - Slash commands: https://docs.anthropic.com/en/docs/claude-code/slash-commands
+
+- **What this does:**
+  - Displays high-signal runtime info continuously (for example cwd, model, context usage).
+- **How to use it:**
+  - Add only the fields you actively use in decisions.
+  - Avoid cluttering the status line with rarely-used metrics.
+- **Example:**
+  - Show working directory + context percentage so you catch wrong-folder actions and high-context sessions early.
+
+### 6) Use the Skill Creator workflow to build and benchmark skills
+
+- **Docs:**
+  - Skills: https://docs.anthropic.com/en/docs/claude-code/skills
+  - Common workflows: https://docs.anthropic.com/en/docs/claude-code/common-workflows
+
+- **What this does:**
+  - Helps you create repeatable instructions (skills) for recurring tasks and evaluate quality with benchmarks.
+- **How to use it:**
+  - Identify a repeated workflow (for example: PR review, release notes, migration checklist).
+  - Encode the workflow into a skill with scope, constraints, and expected output format.
+  - Test with the same prompt set before/after updates to measure consistency and speed.
+- **Examples:**
+  - PR review skill:
+    - Input: changed files and risk focus.
+    - Output: ordered findings by severity + missing tests.
+  - Changelog skill:
+    - Input: commit range.
+    - Output: user-facing release notes + breaking changes section.
+
+#### Skills quick reference
+
+- **What skills are:**
+  - Reusable task instructions that produce consistent outputs for repeated work.
+- **Where skills are configured:**
+  - Project-scoped: repository Claude config area (commonly a project `.claude` path).
+  - User/global: local Claude home config for cross-project use.
+  - Verify exact paths/behavior from docs and `/help`: https://docs.anthropic.com/en/docs/claude-code
+- **How to move skills between computers:**
+  1. Keep project skills in git.
+  2. Sync/export personal skills and copy to target machine.
+  3. Run a small validation prompt set and compare output format/quality.
+  4. Record migration notes in this repo.
+- **When not to use skills:**
+  - One-off exploratory work where fixed structure slows thinking.
+  - Rapidly changing tasks where the skill becomes stale quickly.
+  - Very simple requests where direct prompting is faster.
+
+### 7) Enable agent teams (experimental)
+
+- **Docs:**
+  - Sub-agents: https://docs.anthropic.com/en/docs/claude-code/sub-agents
+  - Claude Code overview: https://docs.anthropic.com/en/docs/claude-code
+
+- **What this does:**
+  - Allows multiple agents/sub-agents to coordinate on larger problems.
+- **How to use it:**
+  - Split work into independent tracks (for example: research, implementation, test design).
+  - Merge outputs with a final synthesis pass.
+- **Example:**
+  - One agent maps architecture, another drafts code changes, another proposes tests, then you consolidate.
+
+### 8) Ask open-ended plan mode prompts
+
+- **Docs:**
+  - Common workflows: https://docs.anthropic.com/en/docs/claude-code/common-workflows
+  - Claude Code overview: https://docs.anthropic.com/en/docs/claude-code
+
+- **What this does:**
+  - Forces broader reasoning before implementation, often surfacing blind spots.
+- **How to use it:**
+  - Ask these questions right after the initial plan and before code edits.
+  - Convert responses into explicit checks in your implementation plan.
+- **Prompts to use during planning:**
+  - What am I not thinking about?
+  - What would an expert consider here?
+- **Example:**
+  - Before schema changes, ask for rollout risks, migration failure modes, and monitoring implications.
+
+### 9) Use Obsidian as a second brain
+
+- **Docs:**
+  - Obsidian help: https://help.obsidian.md/
+  - Claude Code quickstart: https://docs.anthropic.com/en/docs/claude-code/quickstart
+
+- **What this does:**
+  - Turns markdown notes into a searchable knowledge base that Claude can help maintain.
+- **How to use it:**
+  - Keep prompts, decisions, architecture notes, and postmortems in one vault.
+  - Use links/tags so related concepts are discoverable in graph view.
+- **Example:**
+  - Store implementation notes and decision records in a vault, then ask Claude to summarize tradeoffs for the next sprint.
+
 ## Ongoing maintenance
 
 - Treat `claude/settings.json` in this repo as source of truth.
