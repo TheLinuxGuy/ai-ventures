@@ -58,3 +58,10 @@ TIP: I think you can get away with auto agentic coding in copilot with just `cha
 ```
 
 Add this to your vscode, close the file, then open command palette in vscode ":>" and "Reload windows"
+
+## Claude Pro notes and setup
+
+I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extension).
+
+- Centralized setup, usage guidance, and cross-device config lives in [`claude/README.md`](claude/README.md)
+- Shared Claude CLI config for device sync is in [`claude/settings.json`](claude/settings.json)
