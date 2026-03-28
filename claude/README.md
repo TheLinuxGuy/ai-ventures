@@ -5,6 +5,8 @@ This folder stores Claude-related setup, customizations, and usage notes so I ca
 ## What is included
 
 - `settings.json`: canonical Claude CLI settings to reuse across devices.
+- `CLAUDE.md`: repository-managed source for global Claude instructions.
+- Skills index: [`claude/skills/README.md`](claude/skills/README.md)
 - Notes for software in my Claude Pro setup:
   - Claude CLI
   - Claude macOS app
@@ -33,6 +35,79 @@ cp claude/settings.json ~/.claude/settings.json
 ```bash
 cat ~/.claude/settings.json
 ```
+
+6. Sync repository-managed Claude assets (global `CLAUDE.md` + skills) into local runtime path:
+
+```bash
+./claude/sync-skills.sh
+```
+
+7. Verify synced global instructions and skills:
+
+```bash
+ls -la ~/claude
+ls -la ~/claude/skills
+```
+
+8. If you want Claude Code default user scope paths, sync to `~/.claude`:
+
+```bash
+./claude/sync-skills.sh "$HOME/.claude"
+```
+
+9. Verify default-scope files:
+
+```bash
+cat ~/.claude/CLAUDE.md
+ls -la ~/.claude/skills
+```
+
+## Global vs project CLAUDE.md behavior
+
+Claude can load user and project instructions together.
+
+- User/global scope (personal): `~/.claude/CLAUDE.md`
+- Project scope (shared): `./CLAUDE.md` or `./.claude/CLAUDE.md`
+
+Load behavior (practical):
+- Global and project instructions are both loaded when present.
+- More specific/project instructions should be treated as higher priority for project behavior.
+- CLAUDE.md files in parent directories can also be loaded by directory walk logic.
+- Subdirectory CLAUDE.md and path-scoped rules can load when files in those paths are accessed.
+
+Useful verification commands inside Claude Code:
+- `/memory` to see loaded instruction files
+- `/status` to inspect active settings sources
+
+## Set up CLAUDE.md on new projects
+
+1. In a new project, create either `CLAUDE.md` or `.claude/CLAUDE.md`.
+2. Keep project-specific standards there (build/test commands, architecture constraints, naming conventions).
+3. Optionally run `/init` in Claude Code to generate a starter file, then refine it.
+4. For larger projects, split instructions into `.claude/rules/*.md` and use path-scoped rules when useful.
+
+## Exclude global CLAUDE.md for one specific project
+
+If a specific project should not inherit your global/user instructions, use local excludes in that project.
+
+1. Create `.claude/settings.local.json` in the project root.
+2. Add a `claudeMdExcludes` entry targeting your global file path.
+
+Example:
+
+```json
+{
+  "claudeMdExcludes": [
+    "**/.claude/CLAUDE.md",
+    "/Users/<your-user>/.claude/CLAUDE.md"
+  ]
+}
+```
+
+3. Re-open the project session and verify via `/memory` that the global file is excluded.
+
+Note:
+- Managed policy CLAUDE.md files cannot be excluded by user/project settings.
 
 ## When to use which tool
 
