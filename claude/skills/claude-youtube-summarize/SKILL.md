@@ -28,12 +28,36 @@ Convert a YouTube course into a practical repository reference document that is 
 2. Optional updates to related markdown files with merged overlap notes.
 3. Navigation links added where needed so the new file is discoverable.
 
+## CRITICAL: How to fetch YouTube content
+
+**Never fetch YouTube URLs directly** (WebFetch, WebSearch, etc.) — YouTube requires browser rendering and blocks static fetchers.
+
+**Always use `yt-dlp`** via the Bash tool to extract metadata and transcripts locally:
+
+```bash
+# Get video metadata + chapter timestamps
+yt-dlp --dump-json "VIDEO_URL" > /tmp/yt_meta.json
+
+# Download auto-generated subtitles as plain text
+yt-dlp --write-auto-sub --sub-format vtt --sub-lang en --skip-download \
+  -o "/tmp/yt_transcript" "VIDEO_URL"
+
+# Convert VTT to readable text (strip timestamps)
+cat /tmp/yt_transcript.en.vtt | grep -v "^WEBVTT" | grep -v "^[0-9]" \
+  | grep -v "^[0-9][0-9]:" | grep -v "^$" | sort -u > /tmp/yt_clean.txt
+```
+
+Parse `/tmp/yt_meta.json` for: `.title`, `.uploader`, `.duration_string`, `.upload_date`, `.chapters[]` (title + start_time).
+Use the cleaned transcript as the source for all concept coverage.
+
 ## Core workflow
 
 1. Capture metadata and chapter map.
-   - Extract title, creator, duration, publish date, and chapter timestamps.
+   - Run `yt-dlp --dump-json` to get title, creator, duration, publish date, and chapter timestamps.
+   - Parse `.chapters[]` from the JSON for the chapter list.
 2. Extract transcript.
-   - Pull subtitles/transcript text and use it as the source for concept coverage.
+   - Run `yt-dlp --write-auto-sub` to download subtitles locally.
+   - Clean the VTT file to plain text; use it as the source for concept coverage.
 3. Build concept map.
    - Convert chapters into concepts and infer practical usage boundaries.
 4. Write structured markdown.

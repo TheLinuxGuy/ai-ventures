@@ -19,48 +19,66 @@ This folder stores Claude-related setup, customizations, and usage notes so I ca
 - Claude in browser: https://claude.ai
 - Chrome Web Store Claude search (for extension listing): https://chromewebstore.google.com/search/Claude%20Anthropic
 
-## MacBook Air setup checklist
+## New machine setup
+
+There are two setup paths depending on whether Synology Drive is available. Choose one.
+
+---
+
+### Path A — Synology Drive machine (preferred)
+
+**Do this before running Claude Code for the first time.** If Claude Code has already run and created `~/.claude`, delete or back it up first (`rm -rf ~/.claude`).
+
+1. Sign in to Claude Pro on web and desktop app.
+2. Install Synology Drive Client and confirm the drive is mounted at `~/Library/CloudStorage/SynologyDrive-home/` (or your equivalent path).
+3. Install Claude CLI using the official quickstart guide.
+4. Install the Claude extension from the Chrome Web Store.
+5. Symlink `~/.claude` to the Synology-synced copy:
+
+```bash
+ln -s ~/Library/CloudStorage/SynologyDrive-home/.claude ~/.claude
+```
+
+6. Verify the symlink:
+
+```bash
+ls -la ~/.claude
+# Should show -> .../SynologyDrive-home/.claude
+```
+
+7. Run Claude Code. Settings, skills, memories, and `CLAUDE.md` are now synced automatically across all Synology Drive machines.
+
+> `sync-skills.sh` is **not needed** on Synology Drive machines — the symlink keeps everything current.
+
+---
+
+### Path B — Non-Synology machine (manual sync fallback)
 
 1. Sign in to Claude Pro on web and desktop app.
 2. Install Claude CLI using the official quickstart guide.
 3. Install the Claude extension from the Chrome Web Store.
-4. Copy this repository's settings into local CLI config:
+4. Clone this repository.
+5. Sync repository-managed Claude assets (global `CLAUDE.md`, skills, settings) into `~/.claude`:
 
 ```bash
 cp claude/settings.json ~/.claude/settings.json
-```
-
-5. Verify the settings are active:
-
-```bash
-cat ~/.claude/settings.json
-```
-
-6. Sync repository-managed Claude assets (global `CLAUDE.md` + skills) into local runtime path:
-
-```bash
-./claude/sync-skills.sh
-```
-
-7. Verify synced global instructions and skills:
-
-```bash
-ls -la ~/claude
-ls -la ~/claude/skills
-```
-
-8. If you want Claude Code default user scope paths, sync to `~/.claude`:
-
-```bash
 ./claude/sync-skills.sh "$HOME/.claude"
 ```
 
-9. Verify default-scope files:
+6. Verify:
 
 ```bash
 cat ~/.claude/CLAUDE.md
 ls -la ~/.claude/skills
 ```
+
+7. Re-run `sync-skills.sh` whenever skills or `CLAUDE.md` change in the repo:
+
+```bash
+./claude/sync-skills.sh "$HOME/.claude"
+```
+
+> Note: memories (stored in `~/.claude/projects/*/memory/`) are **not synced** on this path. Only skills and `CLAUDE.md` are kept current.
 
 ## Global vs project CLAUDE.md behavior
 
@@ -134,6 +152,8 @@ Note:
 Reference video: https://www.youtube.com/watch?v=XkSBO-CZDFs
 
 Related full-course reference: [claude/claude-code-advanced-course-reference.md](claude/claude-code-advanced-course-reference.md)
+
+Beginner tutorial reference: [claude/claude-code-beginner-tutorial-reference.md](claude/claude-code-beginner-tutorial-reference.md)
 
 These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
 
