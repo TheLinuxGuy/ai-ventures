@@ -47,6 +47,7 @@ ls -la ~/.claude
 ```
 
 7. Run Claude Code. Settings, skills, memories, and `CLAUDE.md` are now synced automatically across all Synology Drive machines.
+8. Install global plugins — see [Plugins and MCP servers](#plugins-and-mcp-servers) below. Start with **Context7** at minimum.
 
 > `sync-skills.sh` is **not needed** on Synology Drive machines — the symlink keeps everything current.
 
@@ -72,13 +73,49 @@ cat ~/.claude/CLAUDE.md
 ls -la ~/.claude/skills
 ```
 
-7. Re-run `sync-skills.sh` whenever skills or `CLAUDE.md` change in the repo:
+7. Install global plugins — see [Plugins and MCP servers](#plugins-and-mcp-servers) below. Start with **Context7** at minimum.
+8. Re-run `sync-skills.sh` whenever skills or `CLAUDE.md` change in the repo:
 
 ```bash
 ./claude/sync-skills.sh "$HOME/.claude"
 ```
 
 > Note: memories (stored in `~/.claude/projects/*/memory/`) are **not synced** on this path. Only skills and `CLAUDE.md` are kept current.
+
+## Plugins and MCP servers
+
+### Context7 (global — always install)
+
+Context7 fetches up-to-date library documentation on demand. Without it, Claude often suggests deprecated APIs or patterns from older library versions.
+
+**Install via Claude Desktop app:**
+1. Open Claude Desktop → Code → Customize → Browse Plugins
+2. Search "Context7" → Install → set scope to **Global**
+
+**Install via CLI:**
+```bash
+claude mcp add context7 --scope user
+```
+
+Verify inside any Claude Code session:
+```
+/mcp
+# Should list context7 as connected
+```
+
+**When it activates:** Automatically when Claude needs to reference library docs. You can also prompt it explicitly: *"use context7 to check the latest Next.js 15 routing API"*.
+
+**Scope:** Global — install once, available in all projects.
+
+> See also: [Beginner tutorial reference §Context7](claude-code-beginner-tutorial-reference.md) for context on why this matters.
+
+---
+
+### Other recommended plugins
+
+See [Beginner tutorial reference §Tip 2 — Plugins](claude-code-beginner-tutorial-reference.md) for Playwright and Superpowers setup.
+
+---
 
 ## Global vs project CLAUDE.md behavior
 

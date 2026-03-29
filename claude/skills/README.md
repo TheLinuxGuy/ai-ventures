@@ -9,6 +9,13 @@ This folder contains reusable Claude-focused skills for repeatable workflows.
   - Includes: chapter coverage, prerequisites, when-to-use guidance, examples, overlap merge checks.
   - Template: [course-reference-template.md](claude-youtube-summarize/course-reference-template.md)
 
+## Global plugins (not skills)
+
+Some Claude capabilities come from plugins/MCP servers rather than skills. These are installed globally and apply to all sessions:
+
+- **Context7** — up-to-date library docs, prevents deprecated API suggestions. See [README.md §Plugins and MCP servers](../README.md#plugins-and-mcp-servers).
+- **Playwright**, **Superpowers**, **GitHub MCP** — see [Beginner tutorial reference](../claude-code-beginner-tutorial-reference.md).
+
 ## Folder convention
 
 - Put one skill per folder.

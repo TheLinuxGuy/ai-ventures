@@ -63,6 +63,9 @@ Add this to your vscode, close the file, then open command palette in vscode ":>
 
 I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extension).
 
-- Centralized setup, usage guidance, and cross-device config lives in [`claude/README.md`](claude/README.md)
-- Shared Claude CLI config for device sync is in [`claude/settings.json`](claude/settings.json)
-- Full chapter-by-chapter course notes and feature reference: [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)
+- Centralized setup, usage guidance, and cross-device config: [`claude/README.md`](claude/README.md)
+- Shared CLI config for device sync: [`claude/settings.json`](claude/settings.json)
+- Global instructions loaded by every session: [`claude/CLAUDE.md`](claude/CLAUDE.md)
+- Advanced course reference (chapter-by-chapter): [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)
+- Beginner tutorial reference (plugins, MCP, tips): [`claude/claude-code-beginner-tutorial-reference.md`](claude/claude-code-beginner-tutorial-reference.md)
+- Skills index and portability guide: [`claude/skills/README.md`](claude/skills/README.md)
