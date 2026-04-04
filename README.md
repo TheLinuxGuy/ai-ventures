@@ -69,3 +69,4 @@ I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extens
 - Advanced course reference (chapter-by-chapter): [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)
 - Beginner tutorial reference (plugins, MCP, tips): [`claude/claude-code-beginner-tutorial-reference.md`](claude/claude-code-beginner-tutorial-reference.md)
 - Skills index and portability guide: [`claude/skills/README.md`](claude/skills/README.md)
+- Rules index (global session behaviors): [`claude/rules/README.md`](claude/rules/README.md)

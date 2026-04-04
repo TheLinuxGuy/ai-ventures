@@ -4,6 +4,11 @@ This folder contains reusable Claude-focused skills for repeatable workflows.
 
 ## Available skills
 
+- [find-docs](find-docs/SKILL.md)
+  - Purpose: Fetch up-to-date library documentation via Context7 CLI (`ctx7`).
+  - Installed by: `npx ctx7 setup` — also installs the companion `~/.claude/rules/context7.md` rule.
+  - Triggers: any question about a library, framework, SDK, API, or CLI tool.
+
 - [claude-youtube-summarize](claude-youtube-summarize/SKILL.md)
   - Purpose: Convert full YouTube videos/courses into structured markdown references.
   - Includes: chapter coverage, prerequisites, when-to-use guidance, examples, overlap merge checks.

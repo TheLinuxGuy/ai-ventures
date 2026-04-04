@@ -7,6 +7,7 @@ This folder stores Claude-related setup, customizations, and usage notes so I ca
 - `settings.json`: canonical Claude CLI settings to reuse across devices.
 - `CLAUDE.md`: repository-managed source for global Claude instructions.
 - Skills index: [`claude/skills/README.md`](claude/skills/README.md)
+- Rules index: [`claude/rules/README.md`](claude/rules/README.md)
 - Notes for software in my Claude Pro setup:
   - Claude CLI
   - Claude macOS app
@@ -47,7 +48,11 @@ ls -la ~/.claude
 ```
 
 7. Run Claude Code. Settings, skills, memories, and `CLAUDE.md` are now synced automatically across all Synology Drive machines.
-8. Install global plugins — see [Plugins and MCP servers](#plugins-and-mcp-servers) below. Start with **Context7** at minimum.
+8. Install MCP servers — these are stored in `~/.claude.json` (personal, not synced) and must be re-run on each machine:
+   ```bash
+   npx ctx7 setup
+   ```
+   When prompted: CLI + Skills → log in → Claude Code. See [Plugins and MCP servers](#plugins-and-mcp-servers) for the full list.
 
 > `sync-skills.sh` is **not needed** on Synology Drive machines — the symlink keeps everything current.
 
@@ -73,7 +78,11 @@ cat ~/.claude/CLAUDE.md
 ls -la ~/.claude/skills
 ```
 
-7. Install global plugins — see [Plugins and MCP servers](#plugins-and-mcp-servers) below. Start with **Context7** at minimum.
+7. Install MCP servers — these are stored in `~/.claude.json` (personal, not synced) and must be re-run on each machine:
+   ```bash
+   npx ctx7 setup
+   ```
+   When prompted: CLI + Skills → log in → Claude Code. See [Plugins and MCP servers](#plugins-and-mcp-servers) for the full list.
 8. Re-run `sync-skills.sh` whenever skills or `CLAUDE.md` change in the repo:
 
 ```bash
@@ -88,26 +97,35 @@ ls -la ~/.claude/skills
 
 Context7 fetches up-to-date library documentation on demand. Without it, Claude often suggests deprecated APIs or patterns from older library versions.
 
-**Install via Claude Desktop app:**
-1. Open Claude Desktop → Code → Customize → Browse Plugins
-2. Search "Context7" → Install → set scope to **Global**
-
-**Install via CLI:**
+**Install:**
 ```bash
-claude mcp add context7 --scope user
+npx ctx7 setup
 ```
 
-Verify inside any Claude Code session:
+When prompted:
+- Access method → **CLI + Skills**
+- Log in via browser when it opens
+- Agent → **Claude Code**
+
+This installs two things into `~/.claude/`:
+- `skills/find-docs/` — skill that triggers doc lookups → [claude/skills/find-docs](skills/find-docs/SKILL.md)
+- `rules/context7.md` — rule that tells Claude when and how to use it → [claude/rules/context7.md](rules/context7.md)
+
+See [claude/rules/README.md](rules/README.md) for an explanation of what rules are and how they differ from `CLAUDE.md`.
+
+Verify:
+```bash
+claude mcp list
+# Should show: context7: ... ✓ Connected
 ```
-/mcp
-# Should list context7 as connected
-```
+
+> **Why not just copy `~/.claude.json`?** MCP server config is stored in `~/.claude.json` alongside personal data (account UUIDs, email, session metrics). That file must never be committed. Always re-run `npx ctx7 setup` on each new machine instead.
 
 **When it activates:** Automatically when Claude needs to reference library docs. You can also prompt it explicitly: *"use context7 to check the latest Next.js 15 routing API"*.
 
 **Scope:** Global — install once, available in all projects.
 
-> See also: [Beginner tutorial reference §Context7](claude-code-beginner-tutorial-reference.md) for context on why this matters.
+> See also: [Beginner tutorial reference §Context7](claude-code-beginner-tutorial-reference.md), [skills/find-docs](skills/find-docs/SKILL.md), and [Context7 CLI reference](https://context7.com/docs/clients/cli#query-library-documentation).
 
 ---
 
