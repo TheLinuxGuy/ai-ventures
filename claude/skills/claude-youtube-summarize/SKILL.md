@@ -22,6 +22,16 @@ Convert a YouTube course into a practical repository reference document that is 
 - Existing related docs to compare for overlap
 - Preferred output style (short tactical, long strategic, or both)
 
+## Output routing rules
+
+Choose the target path based on what the video is primarily about:
+
+- Put summaries in `claude/plugins/` when the video is dedicated to a single plugin or a plugin-specific workflow.
+- Put summaries in `claude/skills/` when the video is dedicated to a single skill or a skill-specific workflow.
+- Put summaries in `claude/` for general Claude setup, workflow, or course videos that are not centered on one plugin or skill.
+
+If a video meaningfully spans multiple topics, keep the main reference in the most specific matching folder and add cross-links from the broader indexes.
+
 ## Expected outputs
 
 1. A new markdown reference file for the video.
@@ -71,6 +81,7 @@ Use the cleaned transcript as the source for all concept coverage.
    - Add a compact overlap section explaining what is tactical versus strategic.
 6. Wire navigation.
    - Add links from existing docs so users can find the new reference quickly.
+   - Add or update the relevant folder index first when the video is plugin-specific or skill-specific.
 7. Clean temporary artifacts.
    - Remove transcript dump files and keep only durable markdown references.
 

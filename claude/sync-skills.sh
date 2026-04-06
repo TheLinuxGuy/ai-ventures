@@ -4,6 +4,7 @@ set -euo pipefail
 # Sync repository-managed Claude assets into a local runtime directory:
 # - Global instructions file: CLAUDE.md
 # - Skills directory
+# - Plugins directory
 #
 # Default runtime directory in this repo workflow: ~/claude
 #
@@ -15,6 +16,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_SKILLS_DIR="$SCRIPT_DIR/skills"
+SRC_PLUGINS_DIR="$SCRIPT_DIR/plugins"
 SRC_GLOBAL_CLAUDE_MD="$SCRIPT_DIR/CLAUDE.md"
 RUNTIME_DIR="$HOME/claude"
 CLEAN=false
@@ -35,26 +37,43 @@ if [[ ! -d "$SRC_SKILLS_DIR" ]]; then
   exit 1
 fi
 
+if [[ ! -d "$SRC_PLUGINS_DIR" ]]; then
+  echo "Source plugins directory not found: $SRC_PLUGINS_DIR" >&2
+  exit 1
+fi
+
 if [[ ! -f "$SRC_GLOBAL_CLAUDE_MD" ]]; then
   echo "Source global CLAUDE.md not found: $SRC_GLOBAL_CLAUDE_MD" >&2
   exit 1
 fi
 
 DEST_SKILLS_DIR="$RUNTIME_DIR/skills"
+DEST_PLUGINS_DIR="$RUNTIME_DIR/plugins"
 DEST_GLOBAL_CLAUDE_MD="$RUNTIME_DIR/CLAUDE.md"
 
 mkdir -p "$DEST_SKILLS_DIR"
+mkdir -p "$DEST_PLUGINS_DIR"
 
 cp "$SRC_GLOBAL_CLAUDE_MD" "$DEST_GLOBAL_CLAUDE_MD"
 
 synced=0
-for skill_dir in "$SRC_SKILLS_DIR"/*; do
-  [[ -d "$skill_dir" ]] || continue
-  skill_name="$(basename "$skill_dir")"
+for skill_item in "$SRC_SKILLS_DIR"/*; do
+  [[ -e "$skill_item" ]] || continue
+  skill_name="$(basename "$skill_item")"
 
   rm -rf "$DEST_SKILLS_DIR/$skill_name"
-  cp -R "$skill_dir" "$DEST_SKILLS_DIR/$skill_name"
+  cp -R "$skill_item" "$DEST_SKILLS_DIR/$skill_name"
   synced=$((synced + 1))
+done
+
+synced_plugins=0
+for plugin_item in "$SRC_PLUGINS_DIR"/*; do
+  [[ -e "$plugin_item" ]] || continue
+  plugin_name="$(basename "$plugin_item")"
+
+  rm -rf "$DEST_PLUGINS_DIR/$plugin_name"
+  cp -R "$plugin_item" "$DEST_PLUGINS_DIR/$plugin_name"
+  synced_plugins=$((synced_plugins + 1))
 done
 
 if [[ "$CLEAN" == true ]]; then
@@ -65,10 +84,19 @@ if [[ "$CLEAN" == true ]]; then
       rm -rf "$dest_skill"
     fi
   done
+
+  for dest_plugin in "$DEST_PLUGINS_DIR"/*; do
+    [[ -d "$dest_plugin" ]] || continue
+    plugin_name="$(basename "$dest_plugin")"
+    if [[ ! -d "$SRC_PLUGINS_DIR/$plugin_name" ]]; then
+      rm -rf "$dest_plugin"
+    fi
+  done
 fi
 
 echo "Synced global CLAUDE.md to $DEST_GLOBAL_CLAUDE_MD"
 echo "Synced $synced skill(s) to $DEST_SKILLS_DIR"
+echo "Synced $synced_plugins plugin(s) to $DEST_PLUGINS_DIR"
 if [[ "$CLEAN" == true ]]; then
-  echo "Clean mode enabled: removed destination-only skill folders."
+  echo "Clean mode enabled: removed destination-only skill and plugin folders."
 fi
