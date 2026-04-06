@@ -68,5 +68,8 @@ I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extens
 - Global instructions loaded by every session: [`claude/CLAUDE.md`](claude/CLAUDE.md)
 - Advanced course reference (chapter-by-chapter): [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)
 - Beginner tutorial reference (plugins, MCP, tips): [`claude/claude-code-beginner-tutorial-reference.md`](claude/claude-code-beginner-tutorial-reference.md)
+- Token hacks reference (cost/context optimization): [`claude/claude-code-token-hacks-reference.md`](claude/claude-code-token-hacks-reference.md)
+- Plugins index and guides: [`claude/plugins/README.md`](claude/plugins/README.md)
+- Codex plugin guide: [`claude/plugins/codex-chatgpt.md`](claude/plugins/codex-chatgpt.md)
 - Skills index and portability guide: [`claude/skills/README.md`](claude/skills/README.md)
 - Rules index (global session behaviors): [`claude/rules/README.md`](claude/rules/README.md)

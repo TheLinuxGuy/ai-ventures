@@ -6,6 +6,7 @@ This folder stores Claude-related setup, customizations, and usage notes so I ca
 
 - `settings.json`: canonical Claude CLI settings to reuse across devices.
 - `CLAUDE.md`: repository-managed source for global Claude instructions.
+- Plugins index: [`claude/plugins/README.md`](claude/plugins/README.md)
 - Skills index: [`claude/skills/README.md`](claude/skills/README.md)
 - Rules index: [`claude/rules/README.md`](claude/rules/README.md)
 - Notes for software in my Claude Pro setup:
@@ -133,6 +134,10 @@ claude mcp list
 
 See [Beginner tutorial reference §Tip 2 — Plugins](claude-code-beginner-tutorial-reference.md) for Playwright and Superpowers setup.
 
+Codex plugin guide and command reference:
+- [claude/plugins/codex-chatgpt.md](plugins/codex-chatgpt.md)
+- [claude/plugins/README.md](plugins/README.md)
+
 ---
 
 ## Global vs project CLAUDE.md behavior
@@ -210,11 +215,14 @@ Related full-course reference: [claude/claude-code-advanced-course-reference.md]
 
 Beginner tutorial reference: [claude/claude-code-beginner-tutorial-reference.md](claude/claude-code-beginner-tutorial-reference.md)
 
+Token hacks reference (cost/context optimization): [claude/claude-code-token-hacks-reference.md](claude/claude-code-token-hacks-reference.md)
+
 These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
 
 How this section is intended to be used:
 - Use this section as quick tactical reminders during active work.
 - Use the full course reference for deeper system design and workflow architecture.
+- Use the token hacks reference when your priority is extending session life and reducing context waste.
 
 ### 1) Prioritize CLI over MCP when possible
 
