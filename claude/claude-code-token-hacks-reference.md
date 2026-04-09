@@ -196,6 +196,7 @@ The video frames four advanced tactics plus one "3.5" timing tactic:
 ## Companion files
 
 - Tactical setup and workflow notes: [claude/README.md](README.md)
+- Limits troubleshooting reference: [claude/claude-code-limits-optimization-reference.md](claude-code-limits-optimization-reference.md)
 - Beginner orientation and plugin setup: [claude/claude-code-beginner-tutorial-reference.md](claude-code-beginner-tutorial-reference.md)
 - Strategic orchestration patterns: [claude/claude-code-advanced-course-reference.md](claude-code-advanced-course-reference.md)
 
