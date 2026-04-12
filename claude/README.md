@@ -219,6 +219,8 @@ Token hacks reference (cost/context optimization): [claude/claude-code-token-hac
 
 Limits optimization reference (session/project/config tactics): [claude/claude-code-limits-optimization-reference.md](claude/claude-code-limits-optimization-reference.md)
 
+Context audit reference (baseline + cleanup workflow): [claude/claude-code-context-audit-reference.md](claude/claude-code-context-audit-reference.md)
+
 These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
 
 How this section is intended to be used:

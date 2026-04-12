@@ -69,6 +69,7 @@ I now use Claude Pro across multiple surfaces (CLI, macOS app, and Chrome extens
 - Advanced course reference (chapter-by-chapter): [`claude/claude-code-advanced-course-reference.md`](claude/claude-code-advanced-course-reference.md)
 - Beginner tutorial reference (plugins, MCP, tips): [`claude/claude-code-beginner-tutorial-reference.md`](claude/claude-code-beginner-tutorial-reference.md)
 - Token hacks reference (cost/context optimization): [`claude/claude-code-token-hacks-reference.md`](claude/claude-code-token-hacks-reference.md)
+- Context audit reference (baseline + cleanup workflow): [`claude/claude-code-context-audit-reference.md`](claude/claude-code-context-audit-reference.md)
 - Plugins index and guides: [`claude/plugins/README.md`](claude/plugins/README.md)
 - Codex plugin guide: [`claude/plugins/codex-chatgpt.md`](claude/plugins/codex-chatgpt.md)
 - Skills index and portability guide: [`claude/skills/README.md`](claude/skills/README.md)
