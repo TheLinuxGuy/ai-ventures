@@ -38,11 +38,9 @@ If a video meaningfully spans multiple topics, keep the main reference in the mo
 2. Optional updates to related markdown files with merged overlap notes.
 3. Navigation links added where needed so the new file is discoverable.
 
-## CRITICAL: How to fetch YouTube content
+## Fetching YouTube content
 
-**Never fetch YouTube URLs directly** (WebFetch, WebSearch, etc.) — YouTube requires browser rendering and blocks static fetchers.
-
-**Always use `yt-dlp`** via the Bash tool to extract metadata and transcripts locally:
+Don't fetch YouTube URLs with WebFetch or WebSearch: YouTube requires browser rendering and blocks static fetchers. Use `yt-dlp` via the Bash tool to extract metadata and transcripts locally:
 
 ```bash
 # Get video metadata + chapter timestamps
@@ -52,9 +50,10 @@ yt-dlp --dump-json "VIDEO_URL" > /tmp/yt_meta.json
 yt-dlp --write-auto-sub --sub-format vtt --sub-lang en --skip-download \
   -o "/tmp/yt_transcript" "VIDEO_URL"
 
-# Convert VTT to readable text (strip timestamps)
-cat /tmp/yt_transcript.en.vtt | grep -v "^WEBVTT" | grep -v "^[0-9]" \
-  | grep -v "^[0-9][0-9]:" | grep -v "^$" | sort -u > /tmp/yt_clean.txt
+# Convert VTT to readable text (strip headers, timestamps, inline tags; dedupe rolling captions, keep order)
+cat /tmp/yt_transcript.en.vtt | grep -v "^WEBVTT" | grep -vE "^(Kind|Language):" \
+  | grep -v -- "-->" | sed 's/<[^>]*>//g' | grep -v "^[[:space:]]*$" \
+  | awk '!seen[$0]++' > /tmp/yt_clean.txt
 ```
 
 Parse `/tmp/yt_meta.json` for: `.title`, `.uploader`, `.duration_string`, `.upload_date`, `.chapters[]` (title + start_time).
@@ -110,7 +109,6 @@ Use the cleaned transcript as the source for all concept coverage.
 
 - Do not copy long transcript passages verbatim.
 - Prefer paraphrased, actionable summaries.
-- Keep recommendations realistic and safe for production workflows.
 
 ## Example invocation prompt
 

@@ -1,23 +1,20 @@
 # GLOBAL CLAUDE.md
 
 ## Core Principles
-- Be concise (verbosity ~3/10 by default)
+- Be concise: answer what was asked, with only the detail it needs
 - Do not restate the problem
 - Avoid filler, repetition, and long explanations
 - Prefer bullet points over paragraphs
-- If uncertain, ask a clarifying question instead of guessing
+- If the answer can't be found in the code, environment, or docs, ask a clarifying question instead of guessing
 
 ## Output Rules
 - Use structured responses
 - Use code blocks for all code
 - Default: minimal explanation unless explicitly requested
-- Summarize in 1–2 lines if needed before details
+- Lead with a short summary when details follow
 
 ## Coding Standards
-- Write clean, production-ready code
-- Prefer readability over cleverness
 - Avoid unnecessary dependencies
-- Keep functions small and focused
 - Add comments only where logic is non-obvious
 
 ## Editing Existing Code
@@ -26,10 +23,7 @@
 - Preserve existing style and structure
 
 ## Workflow
-For normal tasks:
-1. Confirm understanding (max 1–2 lines)
-2. Propose approach (concise)
-3. Execute
+For normal tasks, do the work. State your understanding or approach in one line only when the request is ambiguous or has real alternatives.
 
 For larger tasks:
 - Break work into steps
@@ -49,12 +43,6 @@ Default mode: build
 - Provide smallest possible fix
 - Avoid unnecessary rewrites
 
-## Token Optimization
-- Do not repeat context
-- Do not over-explain
-- Avoid verbose formatting
-- Prefer compact answers
-
 ## Architecture Guidelines
 - Separate logic from I/O
 - Prefer stateless functions when possible
@@ -68,13 +56,12 @@ Default mode: build
 ## When to Ask Questions
 Ask BEFORE proceeding if:
 - Requirements are unclear
-- Environment or stack is unspecified
+- Environment or stack is unspecified and not discoverable from the project
 - Multiple reasonable implementations exist
 
 ## Forbidden
 - No hallucinated APIs or libraries
-- No assumptions about environment without confirmation
-- No unnecessary verbosity
+- No assumptions about the environment that files, manifests, or installed tools could confirm; ask only about what can't be discovered
 
 ## Preferred Response Format
 - Title (optional)
