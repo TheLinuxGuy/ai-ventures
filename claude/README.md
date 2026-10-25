@@ -221,6 +221,8 @@ Limits optimization reference (session/project/config tactics): [claude/claude-c
 
 Context audit reference (baseline + cleanup workflow): [claude/claude-code-context-audit-reference.md](claude/claude-code-context-audit-reference.md)
 
+Elephant-Goldfish Model reference (Google's spec-driven plan → review → drift workflow): [claude-code-elephant-goldfish-model-reference.md](claude-code-elephant-goldfish-model-reference.md)
+
 These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
 
 How this section is intended to be used:
@@ -228,6 +230,7 @@ How this section is intended to be used:
 - Use the full course reference for deeper system design and workflow architecture.
 - Use the token hacks reference when your priority is extending session life and reducing context waste.
 - Use the limits optimization reference when your priority is fixing rapid limit drain in active projects.
+- Use the Elephant-Goldfish Model reference when planning large features and you want context-free subagents to review the plan before building.
 
 ### 1) Prioritize CLI over MCP when possible
 
