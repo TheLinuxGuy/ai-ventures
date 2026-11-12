@@ -12,6 +12,7 @@ This folder contains reusable Claude-focused skills for repeatable workflows.
 - [claude-youtube-summarize](claude-youtube-summarize/SKILL.md)
   - Purpose: Convert full YouTube videos/courses into structured markdown references.
   - Includes: chapter coverage, prerequisites, when-to-use guidance, examples, overlap merge checks.
+  - Transcripts: local Whisper (`mlx-whisper`) is the source of truth; `yt-dlp` captions are the cross-check.
   - Template: [course-reference-template.md](claude-youtube-summarize/course-reference-template.md)
 
 ## Global plugins (not skills)

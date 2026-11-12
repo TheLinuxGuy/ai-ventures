@@ -6,9 +6,9 @@ This folder stores Claude-related setup, customizations, and usage notes so I ca
 
 - `settings.json`: canonical Claude CLI settings to reuse across devices.
 - `CLAUDE.md`: repository-managed source for global Claude instructions.
-- Plugins index: [`claude/plugins/README.md`](claude/plugins/README.md)
-- Skills index: [`claude/skills/README.md`](claude/skills/README.md)
-- Rules index: [`claude/rules/README.md`](claude/rules/README.md)
+- Plugins index: [`claude/plugins/README.md`](plugins/README.md)
+- Skills index: [`claude/skills/README.md`](skills/README.md)
+- Rules index: [`claude/rules/README.md`](rules/README.md)
 - Notes for software in my Claude Pro setup:
   - Claude CLI
   - Claude macOS app
@@ -211,15 +211,15 @@ Note:
 
 Reference video: https://www.youtube.com/watch?v=XkSBO-CZDFs
 
-Related full-course reference: [claude/claude-code-advanced-course-reference.md](claude/claude-code-advanced-course-reference.md)
+Related full-course reference: [claude/claude-code-advanced-course-reference.md](claude-code-advanced-course-reference.md)
 
-Beginner tutorial reference: [claude/claude-code-beginner-tutorial-reference.md](claude/claude-code-beginner-tutorial-reference.md)
+Beginner tutorial reference: [claude/claude-code-beginner-tutorial-reference.md](claude-code-beginner-tutorial-reference.md)
 
-Token hacks reference (cost/context optimization): [claude/claude-code-token-hacks-reference.md](claude/claude-code-token-hacks-reference.md)
+Token hacks reference (cost/context optimization): [claude/claude-code-token-hacks-reference.md](claude-code-token-hacks-reference.md)
 
-Limits optimization reference (session/project/config tactics): [claude/claude-code-limits-optimization-reference.md](claude/claude-code-limits-optimization-reference.md)
+Limits optimization reference (session/project/config tactics): [claude/claude-code-limits-optimization-reference.md](claude-code-limits-optimization-reference.md)
 
-Context audit reference (baseline + cleanup workflow): [claude/claude-code-context-audit-reference.md](claude/claude-code-context-audit-reference.md)
+Context audit reference (baseline + cleanup workflow): [claude/claude-code-context-audit-reference.md](claude-code-context-audit-reference.md)
 
 Elephant-Goldfish Model reference (Google's spec-driven plan → review → drift workflow): [claude-code-elephant-goldfish-model-reference.md](claude-code-elephant-goldfish-model-reference.md)
 
