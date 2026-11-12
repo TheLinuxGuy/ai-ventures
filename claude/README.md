@@ -223,6 +223,8 @@ Context audit reference (baseline + cleanup workflow): [claude/claude-code-conte
 
 Elephant-Goldfish Model reference (Google's spec-driven plan → review → drift workflow): [claude-code-elephant-goldfish-model-reference.md](claude-code-elephant-goldfish-model-reference.md)
 
+Cloud software factory reference (Warp: sandboxed, code-defined, self-improving agent pipelines for teams): [cloud-software-factory-warp-reference.md](cloud-software-factory-warp-reference.md)
+
 These notes are based on the video highlights and should be treated as workflow guidance. For command availability and current behavior, verify in Claude Code with `/help`.
 
 How this section is intended to be used:
@@ -231,6 +233,7 @@ How this section is intended to be used:
 - Use the token hacks reference when your priority is extending session life and reducing context waste.
 - Use the limits optimization reference when your priority is fixing rapid limit drain in active projects.
 - Use the Elephant-Goldfish Model reference when planning large features and you want context-free subagents to review the plan before building.
+- Use the cloud software factory reference when moving a team from laptop agents to sandboxed, measured, cloud-run agent workflows.
 
 ### 1) Prioritize CLI over MCP when possible
 

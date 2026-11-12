@@ -64,17 +64,47 @@ Cookie rules:
 - macOS may show a Keychain prompt on first use; the user must approve it.
 - Don't loop on 429 without cookies; add the flag instead.
 
+### Whisper pass (default: source of truth, captions verify)
+
+Always run both transcripts. YouTube auto-captions mangle product names and jargon (e.g. "scorers" → "estimates", "harnesses" → "tools"), so the local Whisper transcript is the source of truth and the VTT captions are the cross-check.
+
+- Start Whisper in the background first (`run_in_background`), then fetch metadata + captions while it runs.
+- Use the Whisper text for all concept coverage, names, and quotes.
+- Use the cleaned VTT as verification: it has no hallucinations, so diff for segments Whisper dropped, looped, or invented (e.g. a stray "Music" at the start or "Thank you" at the end).
+- If Whisper and captions disagree on a name or number, prefer Whisper, and mark unverifiable names as "as heard" in the reference.
+- If Whisper is unavailable or fails, fall back to the VTT transcript and say so in the reference's caveats.
+
+```bash
+# One-time install (Apple Silicon; isolated, needs ffmpeg + uv)
+uv tool install mlx-whisper
+
+# Fresh scratch dir; 16 kHz mono wav
+mkdir -p /tmp/yt_audio
+yt-dlp --cookies-from-browser brave -f bestaudio -x --audio-format wav \
+  --postprocessor-args "ffmpeg:-ar 16000 -ac 1" -o "/tmp/yt_audio/talk.%(ext)s" "VIDEO_URL"
+
+# Transcribe (~3 min for a 22 min talk); first run downloads the model (~1.6 GB)
+mlx_whisper /tmp/yt_audio/talk.wav --model mlx-community/whisper-large-v3-turbo --language en \
+  --output-dir /tmp/yt_audio --output-format txt --output-name whisper \
+  --initial-prompt "SPEAKER, PRODUCT, TERMS from title/description"
+```
+
+- Seed `--initial-prompt` with names and jargon from the video title and description to improve spelling.
+- Whisper still writes "Cloud Code" for Claude Code; fix by hand.
+- Delete `/tmp/yt_audio` when done.
+
 Parse `/tmp/yt_meta.json` for: `.title`, `.uploader`, `.duration_string`, `.upload_date`, `.chapters[]` (title + start_time).
-Use the cleaned transcript as the source for all concept coverage.
+Use the Whisper transcript as the source for all concept coverage; use the cleaned VTT only to cross-check it.
 
 ## Core workflow
 
 1. Capture metadata and chapter map.
    - Run `yt-dlp --cookies-from-browser brave --dump-json` to get title, creator, duration, publish date, and chapter timestamps.
    - Parse `.chapters[]` from the JSON for the chapter list.
-2. Extract transcript.
-   - Run `yt-dlp --cookies-from-browser brave --write-auto-sub` to download subtitles locally.
-   - Clean the VTT file to plain text; use it as the source for concept coverage.
+2. Extract transcripts (both, by default).
+   - Start the local Whisper transcription in the background (see "Whisper pass").
+   - Run `yt-dlp --cookies-from-browser brave --write-auto-sub` to download subtitles and clean the VTT to plain text.
+   - When Whisper finishes, use it as the source for concept coverage and use the VTT to cross-check for dropped or invented segments.
 3. Build concept map.
    - Convert chapters into concepts and infer practical usage boundaries.
 4. Write structured markdown.
